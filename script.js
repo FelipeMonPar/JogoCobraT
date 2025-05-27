@@ -36,7 +36,8 @@ if (true){
 }
 console.log(y); */
 
-let recorde = localStorage.getItem("recorde") || 0;
+let pontuacao = 0;
+
 let canvas = document.getElementById("snake");          //desenho
 let contexto = canvas.getContext("2d");
 let bloco = 32; 
@@ -100,6 +101,7 @@ function atualizarDirecao(evento){
     if ((evento.keyCode === 39 || tecla === 'd') && direcao !== 'esquerda') direcao = 'direita';
     if ((evento.keyCode === 40 || tecla === 's') && direcao !== 'cima') direcao = 'baixo';
 }
+
 
 function reiniciarJogo() {
     // Esconde a tela de fim de jogo e canvas temporariamente
@@ -228,4 +230,3 @@ function comecarJogo() {
         }
     }, 1000);
 }
-
