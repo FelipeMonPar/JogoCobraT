@@ -36,8 +36,7 @@ if (true){
 }
 console.log(y); */
 
-let pontuacao = 0;
-
+let recorde = localStorage.getItem("recorde") || 0;
 let canvas = document.getElementById("snake");          //desenho
 let contexto = canvas.getContext("2d");
 let bloco = 32; 
@@ -93,11 +92,13 @@ function desenharComida() {
 
 document.addEventListener('keydown', atualizarDirecao); // keydown : movimentar as teclas
 
-function atualizarDirecao(evento){     // keyCode - código da tecla
-    if (evento.keyCode == 37 && direcao != 'direita') direcao = 'esquerda'
-    if (evento.keyCode == 38 && direcao != 'baixo') direcao = 'cima'
-    if (evento.keyCode == 39 && direcao != 'esquerda') direcao = 'direita'
-    if (evento.keyCode == 40 && direcao != 'cima') direcao = 'baixo'
+function atualizarDirecao(evento){
+    const tecla = evento.key.toLowerCase(); // pega tecla pressionada e converte para minúscula
+
+    if ((evento.keyCode === 37 || tecla === 'a') && direcao !== 'direita') direcao = 'esquerda';
+    if ((evento.keyCode === 38 || tecla === 'w') && direcao !== 'baixo') direcao = 'cima';
+    if ((evento.keyCode === 39 || tecla === 'd') && direcao !== 'esquerda') direcao = 'direita';
+    if ((evento.keyCode === 40 || tecla === 's') && direcao !== 'cima') direcao = 'baixo';
 }
 
 function reiniciarJogo() {
